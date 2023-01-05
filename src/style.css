@@ -1,0 +1,11 @@
+.BucketItem.low {
+    background: lightblue
+}
+
+.BucketItem.medium {
+    background: lightgreen
+}
+
+.BucketItem.high {
+    background: lightcoral
+}

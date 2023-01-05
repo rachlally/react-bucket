@@ -1,12 +1,12 @@
 import React from 'react'
 import { ButtonGroup, Button, List, ListItem, ListItemText } from '@mui/material';
-
+import "../style.css";
 
 export default function BucketItem(props) {
 
     return (
         <List>
-            <ListItem sx={{color: 'purple'}}>
+            <ListItem sx={{color: 'purple'}} className={`BucketItem ${props.priority}`}>
                 {props.task} 
                 <ButtonGroup variant="text" aria-label="outlined button group">
                     <Button>Delete</Button>
