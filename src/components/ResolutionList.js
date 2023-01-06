@@ -1,37 +1,42 @@
 import React, { useState } from 'react'
-import BucketItem from './BucketItem';
+import ResolutionItem from './ResolutionItem';
 import "../style.css";
 import { TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 
 
-export default function BucketList() {
+export default function ResolutionList() {
   const [newItem, setNewItem] = useState('')
   const [newItemPriority, setNewItemPriority] = useState('medium')
   const [tasks, setTasks] = useState([
     {
       task: "Ski in Japan",
-      priority: "medium"
+      priority: "medium",
+      isComplete: false
     },
     {
       task: "Ski Mt St Helens",
-      priority: "low"
+      priority: "low",
+      isComplete: false
     },
     {
       task: "Surf in Baja",
-      priority: "high"
+      priority: "high",
+      isComplete: false
     },
     {
       task: "Go international!",
-      priority: "high"
+      priority: "high",
+      isComplete: false
     },
     {
       task: "Dirtbike in the desert",
-      priority: "medium"
+      priority: "medium",
+      isComplete: false
     }
   ])
 
@@ -39,11 +44,30 @@ export default function BucketList() {
     e.preventDefault();
     const newTask = {
       task: newItem,
-      priority: newItemPriority
+      priority: newItemPriority,
+      isComplete: false
     }
     setTasks([...tasks, newTask])
   }
 
+  const completeTask = idx=>{
+    const arrCopy = [...tasks];
+    arrCopy[idx].isComplete = !arrCopy[idx].isComplete
+    setTasks(arrCopy)
+  }
+
+  const deleteTask = idx=>{
+    const arrCopy = [...tasks];
+    arrCopy.splice(idx,1)
+    setTasks(arrCopy)
+  }
+
+  const editTask = (idx,newTask)=>{
+    const arrCopy = [...tasks];
+    arrCopy[idx]=newTask
+    setTasks(arrCopy)
+  }
+   
   return (
     <div>
       <Box component="form" onSubmit={handleFormSubmit}>
@@ -56,7 +80,15 @@ export default function BucketList() {
             <button >Add Item</button>
       </Box>
       <ul>
-        {tasks.map((item, i) => <BucketItem key={i} task={item.task} priority={item.priority} />)}
+        {tasks.map((item, i) => <ResolutionItem 
+        key={i} 
+        index={i} 
+        task={item.task} 
+        priority={item.priority} 
+        completeTask={completeTask} 
+        isComplete={item.isComplete} 
+        deleteTask={deleteTask}
+        editTask={editTask}/>)}
       </ul>
     </div>
 

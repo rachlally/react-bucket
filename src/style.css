@@ -1,11 +1,15 @@
-.BucketItem.low {
+.ResolutionItem.low {
     background: lightblue
 }
 
-.BucketItem.medium {
+.ResolutionItem.medium {
     background: lightgreen
 }
 
-.BucketItem.high {
+.ResolutionItem.high {
     background: lightcoral
+}
+
+.ResolutionItem.complete {
+    opacity: 0.4;
 }
