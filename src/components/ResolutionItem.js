@@ -3,7 +3,6 @@ import { Button, ButtonGroup, List, ListItem } from '@mui/material';
 import { TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-// import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import "../style.css";
 
@@ -31,7 +30,7 @@ export default function ResolutionItem(props) {
                   <MenuItem value="medium">Medium Priority</MenuItem>
                   <MenuItem value="high">High Priority</MenuItem>
                 </Select>          
-                <button>Add Item</button>
+                <Button type="submit">Add Item</Button>
           </Box>
             ):(
             <ListItem sx={{color: 'purple'}} className={`ResolutionItem ${props.priority} ${props.isComplete?"complete":""}`}>

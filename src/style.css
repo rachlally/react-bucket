@@ -1,3 +1,8 @@
+:root {
+    color: purple;
+    
+}
+
 .ResolutionItem.low {
     background: lightblue
 }
@@ -13,3 +18,4 @@
 .ResolutionItem.complete {
     opacity: 0.4;
 }
+

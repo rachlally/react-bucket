@@ -4,7 +4,7 @@ import "../style.css";
 import { TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-// import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 
@@ -48,6 +48,7 @@ export default function ResolutionList() {
       isComplete: false
     }
     setTasks([...tasks, newTask])
+    setNewItem('')
   }
 
   const completeTask = idx=>{
@@ -77,7 +78,7 @@ export default function ResolutionList() {
               <MenuItem value="medium">Medium Priority</MenuItem>
               <MenuItem value="high">High Priority</MenuItem>
             </Select>          
-            <button >Add Item</button>
+            <Button type="submit">Add Item</Button>
       </Box>
       <ul>
         {tasks.map((item, i) => <ResolutionItem 
