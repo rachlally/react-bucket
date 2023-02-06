@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ResolutionItem from './ResolutionItem';
 import "../style.css";
 import { TextField } from '@mui/material';
@@ -13,32 +13,14 @@ export default function ResolutionList() {
   const [newItem, setNewItem] = useState('')
   const [newItemPriority, setNewItemPriority] = useState('medium')
   const [tasks, setTasks] = useState([
-    {
-      task: "Ski in Japan",
-      priority: "medium",
-      isComplete: false
-    },
-    {
-      task: "Ski Mt St Helens",
-      priority: "low",
-      isComplete: false
-    },
-    {
-      task: "Surf in Baja",
-      priority: "high",
-      isComplete: false
-    },
-    {
-      task: "Go international!",
-      priority: "high",
-      isComplete: false
-    },
-    {
-      task: "Dirtbike in the desert",
-      priority: "medium",
-      isComplete: false
-    }
+    
   ])
+
+  useEffect(()=>{
+    fetch("http://localhost:3001/api/resolutions").then(res=>res.json()).then(data=>{
+      setTasks(data)
+    })
+  }, [])
 
   const handleFormSubmit = e => {
     e.preventDefault();
