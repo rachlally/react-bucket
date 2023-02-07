@@ -29,8 +29,13 @@ export default function ResolutionList(props) {
       priority: newItemPriority,
       isComplete: false
     }
-    setTasks([...tasks, newTask])
     setNewItem('')
+    setNewItemPriority('medium')
+    API.createResolution(newTask,props.token).then(data=>{
+      API.getUserResolutions(props.userId).then(data=>{
+        setTasks(data.Resolutions)
+      })
+    })
   }
 
   const completeTask = idx=>{
