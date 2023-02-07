@@ -41,8 +41,17 @@ function App() {
       }
     })
   }
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    setUserId(0);
+    setToken("");
+  };
+
   return (
     <div className="App">
+      {isLoggedIn&&<button onClick={handleLogout}>Logout</button>}
       {isLoggedIn ? (
         <div>
           <h1> 2023 Resolution List</h1>
