@@ -20,7 +20,7 @@ export default function ResolutionList(props) {
     API.getUserResolutions(props.userId).then(data=>{
       setTasks(data.Resolutions)
     })
-  }, [])
+  }, [props.userId])
 
   const handleFormSubmit = e => {
     e.preventDefault();
