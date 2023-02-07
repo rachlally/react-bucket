@@ -6,10 +6,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import API from '../utils/API';
 
 
-
-export default function ResolutionList() {
+export default function ResolutionList(props) {
   const [newItem, setNewItem] = useState('')
   const [newItemPriority, setNewItemPriority] = useState('medium')
   const [tasks, setTasks] = useState([
@@ -17,8 +17,8 @@ export default function ResolutionList() {
   ])
 
   useEffect(()=>{
-    fetch("http://localhost:3001/api/resolutions").then(res=>res.json()).then(data=>{
-      setTasks(data)
+    API.getUserResolutions(props.userId).then(data=>{
+      setTasks(data.Resolutions)
     })
   }, [])
 
