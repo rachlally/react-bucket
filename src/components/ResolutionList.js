@@ -44,10 +44,12 @@ export default function ResolutionList(props) {
     setTasks(arrCopy)
   }
 
-  const deleteTask = idx=>{
-    const arrCopy = [...tasks];
-    arrCopy.splice(idx,1)
-    setTasks(arrCopy)
+  const deleteTask = id=>{
+    API.deleteResolution(id,props.token).then(del=>{
+      API.getUserResolutions(props.userId).then(data=>{
+        setTasks(data.Resolutions)
+      })
+    })
   }
 
   const editTask = (idx,newTask)=>{
@@ -68,9 +70,9 @@ export default function ResolutionList(props) {
             <Button type="submit">Add Item</Button>
       </Box>
       <ul>
-        {tasks.map((item, i) => <ResolutionItem 
-        key={i} 
-        index={i} 
+        {tasks.map((item) => <ResolutionItem 
+        key={item.id} 
+        index={item.id} 
         task={item.task} 
         priority={item.priority} 
         completeTask={completeTask} 

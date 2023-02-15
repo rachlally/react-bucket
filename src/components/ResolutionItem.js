@@ -17,7 +17,7 @@ export default function ResolutionItem(props) {
             priority:editItemPriority,
             isComplete:props.isComplete
         }
-        props.editTask(props.index,newItem)
+        props.editTask(props.id,newItem)
         setIsEditing(false)
     }
     return (
@@ -36,9 +36,9 @@ export default function ResolutionItem(props) {
             <ListItem sx={{color: 'purple'}} className={`ResolutionItem ${props.priority} ${props.isComplete?"complete":""}`}>
                 {props.task} 
                 <ButtonGroup variant="text" aria-label="outlined button group">
-                    <Button onClick={()=>props.deleteTask(props.index)}>Delete</Button>
+                    <Button onClick={()=>props.deleteTask(props.id)}>Delete</Button>
                     <Button onClick={()=>setIsEditing(true)}>Edit</Button>
-                    <Button onClick={()=>props.completeTask(props.index)}>{props.isComplete?"Do Again!":"Completed"}</Button>
+                    <Button onClick={()=>props.completeTask(props.id)}>{props.isComplete?"Do Again!":"Completed"}</Button>
                 </ButtonGroup>
             </ListItem>
             )}
