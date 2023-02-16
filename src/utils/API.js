@@ -33,15 +33,15 @@ const API = {
             }
         }).then(res=>res.json())
     },
-    deleteResolution:(resolutionId, token)=>{
-        return fetch(`${URL_PREFIX}/api/resolutions/${resolutionId}`,{
-            method:'DELETE',
-            headers:{
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        }).then(res=>res.json())
-    }
+    // deleteResolution:(resolutionId, token)=>{
+    //     return fetch(`${URL_PREFIX}/api/resolutions/${resolutionId}`,{
+    //         method:'DELETE',
+    //         headers:{
+    //             "Content-Type": "application/json",
+    //             "Authorization": `Bearer ${token}`
+    //         }
+    //     }).then(res=>res.json())
+    // }
 }
 
 export default API
